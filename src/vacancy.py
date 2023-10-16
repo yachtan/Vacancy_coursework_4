@@ -1,7 +1,5 @@
-from pprint import pprint
-
-
 class Vacancy:
+    """Класс для работы с вакансиями"""
 
     all = {}
 
@@ -22,6 +20,8 @@ class Vacancy:
 
         if isinstance(other, Vacancy):
             if self.salary['currency'] == 'RUR' and other.salary['currency'] == 'RUR':
+                return int(self.salary['from']) - int(other.salary['from'])
+            elif self.salary['currency'] == 'rub' and other.salary['currency'] == 'rub':
                 return int(self.salary['from']) - int(other.salary['from'])
             else:
                 print('Нельзя получить разницу, т.к. зарплата указана не в рублях!')
@@ -71,4 +71,3 @@ class Vacancy:
         print(f'Вакансии:\n')
         for vac in Vacancy.all.values():
             vac.print_info()
-
